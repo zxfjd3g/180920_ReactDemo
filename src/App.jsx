@@ -1,17 +1,39 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-import logo from './logo.svg'
-import './App.css'
+import Add from './components/add/add'
+import List from './components/list/list'
 
 /*
 应用根组件
  */
-export default class App extends Component {
+export default class App extends React.Component {
+
+  state = {
+    comments: [
+      {username: 'Tom', content: 'React有点难'},
+      {username: 'Jack', content: 'React很难'},
+      {username: 'Bob', content: 'React So So'}
+    ]
+  }
+
   render() {
+    const {comments} = this.state
+
     return (
       <div>
-        <img src={logo} alt="logo" className='logo'/>
-        <h2>first react demo</h2>
+        <header className="site-header jumbotron">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12">
+                <h1>请发表对React的评论222</h1>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div className="container">
+          <Add/>
+          <List comments={comments}/>
+        </div>
       </div>
     )
   }
