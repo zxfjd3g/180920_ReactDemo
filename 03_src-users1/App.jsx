@@ -8,11 +8,23 @@ import Main from './components/main'
  */
 export default class App extends React.Component {
 
+
+  state = {
+    searchName: ''
+  }
+
+  setSearchName = (searchName) => {
+    this.setState({
+      searchName
+    })
+  }
+
   render() {
+    const {searchName} = this.state
     return (
       <div className="container">
-        <Search/>
-        <Main/>
+        <Search setSearchName={this.setSearchName}/>
+        <Main searchName={searchName}/>
       </div>
     )
   }
