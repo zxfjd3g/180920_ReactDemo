@@ -6,7 +6,15 @@ import './index.css'
 export default class Item extends Component {
 
   static propTypes = {
-    comment: PropTypes.object.isRequired
+    comment: PropTypes.object.isRequired,
+    deleteComment: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+  }
+
+  deleteComment = () => {
+    if(window.confirm('确定要删除吗?')) {
+      this.props.deleteComment(this.props.index)
+    }
   }
 
   render() {
@@ -16,7 +24,7 @@ export default class Item extends Component {
     return (
       <li className="list-group-item">
         <div className="handle">
-          <a href="javascript:;">删除</a>
+          <a href="javascript:;" onClick={this.deleteComment}>删除</a>
         </div>
         <p className="user"><span >{username}</span><span>说:</span></p>
         <p className="centence">{content}</p>
@@ -24,3 +32,11 @@ export default class Item extends Component {
     )
   }
 }
+
+/*
+const obj = {
+  n: 1,
+  m: 2
+}
+delete obj.n
+obj.n = null*/
