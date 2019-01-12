@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$Title$</title>
+</head>
+<body>
+<script type="text/javascript">
+
+  /*
+  执行函数定义
+    执行函数定义的语句
+    创建一个函数对象
+    定义一个变量
+    将函数对象赋值给变量(变量中保存了函数对象的地址值)
+  执行函数
+    必须在执行函数定义之后执行
+
+   所有函数都是Function的实例对象, 包括它自己
+   */
+  fn()
+  function fn() {
+
+  }
+
+  console.log(Function.prototype, {}, '----')
+
+  Function.prototype.__proto__ = Object.prototype
+
+
+  function Foo () {}
+  const fn1 = new Foo()
+  const fn2 = new Foo()
+  const o1 = {}
+  const o2 = new Object()
+</script>
+</body>
+</html>
