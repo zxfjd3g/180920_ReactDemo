@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {Route, Link} from 'react-router-dom'
+import MessageDetail from './message-detail'
 
 export default class Message extends Component {
   state = {
@@ -25,15 +27,20 @@ export default class Message extends Component {
     const {messages} = this.state
 
     return (
-      <ul>
-        {
-          messages.map(m => (
-            <li key={m.id}>
-              <a href="???">{m.title}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <div>
+        <ul>
+          {
+            messages.map(m => (
+              <li key={m.id}>
+                <Link to={'/home/message/'+m.id}>{m.title}</Link>
+              </li>
+            ))
+          }
+        </ul>
+        <hr/>
+        <Route path='/home/message/:id' component={MessageDetail}/>
+      </div>
+
     )
   }
 }
